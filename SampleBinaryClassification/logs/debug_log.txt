@@ -1,0 +1,253 @@
+Inferring Columns ...
+Creating Data loader ...
+Loading data ...
+Exploring multiple ML algorithms and settings to find you the best model for ML task: binary-classification
+For further learning check: https://aka.ms/mlnet-cli
+|     Trainer                              Accuracy      AUC    AUPRC  F1-score  Duration #Iteration             |
+[Source=AutoML, Kind=Trace] Channel started
+[Source=AutoML, Kind=Trace] Evaluating pipeline xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} xf=Normalizing{ col=Features:Features} tr=AveragedPerceptronBinary{}  cache=+
+[Source=AutoML, Kind=Trace] 1	0.792800790301494	00:00:02.7161910	xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} xf=Normalizing{ col=Features:Features} tr=AveragedPerceptronBinary{}  cache=+
+|1    AveragedPerceptronBinary               0.8041   0.8644   0.8729    0.8000       2.7          0             |
+[Source=AutoML, Kind=Trace] Evaluating pipeline xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} xf=Normalizing{ col=Features:Features} tr=SdcaLogisticRegressionBinary{}  cache=+
+[Source=AutoML, Kind=Trace] 2	0.810331777867541	00:00:03.2379040	xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} xf=Normalizing{ col=Features:Features} tr=SdcaLogisticRegressionBinary{}  cache=+
+|2    SdcaLogisticRegressionBinary           0.8240   0.9012   0.9124    0.8167       3.2          0             |
+[Source=AutoML, Kind=Trace] Evaluating pipeline xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} tr=LightGbmBinary{}  cache=-
+[Source=AutoML, Kind=Error] Pipeline crashed: xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} tr=LightGbmBinary{}  cache=- . Exception: System.DllNotFoundException: Unable to load shared library 'lib_lightgbm' or one of its dependencies. In order to help diagnose loading problems, consider setting the DYLD_PRINT_LIBRARIES environment variable: dlopen(liblib_lightgbm, 1): image not found
+   at Microsoft.ML.Trainers.LightGbm.WrappedLightGbmInterface.DatasetCreateFromSampledColumn(IntPtr sampleValuePerColumn, IntPtr sampleIndicesPerColumn, Int32 numCol, Int32[] sampleNonZeroCntPerColumn, Int32 numSampleRow, Int32 numTotalRow, String parameters, IntPtr& ret)
+   at Microsoft.ML.Trainers.LightGbm.Dataset..ctor(Double[][] sampleValuePerColumn, Int32[][] sampleIndicesPerColumn, Int32 numCol, Int32[] sampleNonZeroCntPerColumn, Int32 numSampleRow, Int32 numTotalRow, String param, Single[] labels, Single[] weights, Int32[] groups)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.CreateDatasetFromSamplingData(IChannel ch, Factory factory, Int32 numRow, String param, Single[] labels, Single[] weights, Int32[] groups, CategoricalMetaData catMetaData, Dataset& dataset)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.LoadTrainingData(IChannel ch, RoleMappedData trainData, CategoricalMetaData& catMetaData)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.TrainModelCore(TrainContext context)
+   at Microsoft.ML.Trainers.TrainerEstimatorBase`2.TrainTransformer(IDataView trainSet, IDataView validationSet, IPredictor initPredictor)
+   at Microsoft.ML.Data.EstimatorChain`1.Fit(IDataView input)
+   at Microsoft.ML.AutoML.RunnerUtil.TrainAndScorePipeline[TMetrics](MLContext context, SuggestedPipeline pipeline, IDataView trainData, IDataView validData, String labelColumn, IMetricsAgent`1 metricsAgent, ITransformer preprocessorTransform, FileInfo modelFileInfo, DataViewSchema modelInputSchema, AutoMLLogger logger)
+[Source=AutoML, Kind=Error] Pipeline crashed: xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} tr=LightGbmBinary{}  cache=- . Exception: System.DllNotFoundException: Unable to load shared library 'lib_lightgbm' or one of its dependencies. In order to help diagnose loading problems, consider setting the DYLD_PRINT_LIBRARIES environment variable: dlopen(liblib_lightgbm, 1): image not found
+   at Microsoft.ML.Trainers.LightGbm.WrappedLightGbmInterface.DatasetCreateFromSampledColumn(IntPtr sampleValuePerColumn, IntPtr sampleIndicesPerColumn, Int32 numCol, Int32[] sampleNonZeroCntPerColumn, Int32 numSampleRow, Int32 numTotalRow, String parameters, IntPtr& ret)
+   at Microsoft.ML.Trainers.LightGbm.Dataset..ctor(Double[][] sampleValuePerColumn, Int32[][] sampleIndicesPerColumn, Int32 numCol, Int32[] sampleNonZeroCntPerColumn, Int32 numSampleRow, Int32 numTotalRow, String param, Single[] labels, Single[] weights, Int32[] groups)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.CreateDatasetFromSamplingData(IChannel ch, Factory factory, Int32 numRow, String param, Single[] labels, Single[] weights, Int32[] groups, CategoricalMetaData catMetaData, Dataset& dataset)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.LoadTrainingData(IChannel ch, RoleMappedData trainData, CategoricalMetaData& catMetaData)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.TrainModelCore(TrainContext context)
+   at Microsoft.ML.Trainers.TrainerEstimatorBase`2.TrainTransformer(IDataView trainSet, IDataView validationSet, IPredictor initPredictor)
+   at Microsoft.ML.Data.EstimatorChain`1.Fit(IDataView input)
+   at Microsoft.ML.AutoML.RunnerUtil.TrainAndScorePipeline[TMetrics](MLContext context, SuggestedPipeline pipeline, IDataView trainData, IDataView validData, String labelColumn, IMetricsAgent`1 metricsAgent, ITransformer preprocessorTransform, FileInfo modelFileInfo, DataViewSchema modelInputSchema, AutoMLLogger logger)
+[Source=AutoML, Kind=Error] Pipeline crashed: xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} tr=LightGbmBinary{}  cache=- . Exception: System.DllNotFoundException: Unable to load shared library 'lib_lightgbm' or one of its dependencies. In order to help diagnose loading problems, consider setting the DYLD_PRINT_LIBRARIES environment variable: dlopen(liblib_lightgbm, 1): image not found
+   at Microsoft.ML.Trainers.LightGbm.WrappedLightGbmInterface.DatasetCreateFromSampledColumn(IntPtr sampleValuePerColumn, IntPtr sampleIndicesPerColumn, Int32 numCol, Int32[] sampleNonZeroCntPerColumn, Int32 numSampleRow, Int32 numTotalRow, String parameters, IntPtr& ret)
+   at Microsoft.ML.Trainers.LightGbm.Dataset..ctor(Double[][] sampleValuePerColumn, Int32[][] sampleIndicesPerColumn, Int32 numCol, Int32[] sampleNonZeroCntPerColumn, Int32 numSampleRow, Int32 numTotalRow, String param, Single[] labels, Single[] weights, Int32[] groups)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.CreateDatasetFromSamplingData(IChannel ch, Factory factory, Int32 numRow, String param, Single[] labels, Single[] weights, Int32[] groups, CategoricalMetaData catMetaData, Dataset& dataset)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.LoadTrainingData(IChannel ch, RoleMappedData trainData, CategoricalMetaData& catMetaData)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.TrainModelCore(TrainContext context)
+   at Microsoft.ML.Trainers.TrainerEstimatorBase`2.TrainTransformer(IDataView trainSet, IDataView validationSet, IPredictor initPredictor)
+   at Microsoft.ML.Data.EstimatorChain`1.Fit(IDataView input)
+   at Microsoft.ML.AutoML.RunnerUtil.TrainAndScorePipeline[TMetrics](MLContext context, SuggestedPipeline pipeline, IDataView trainData, IDataView validData, String labelColumn, IMetricsAgent`1 metricsAgent, ITransformer preprocessorTransform, FileInfo modelFileInfo, DataViewSchema modelInputSchema, AutoMLLogger logger)
+[Source=AutoML, Kind=Error] Pipeline crashed: xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} tr=LightGbmBinary{}  cache=- . Exception: System.DllNotFoundException: Unable to load shared library 'lib_lightgbm' or one of its dependencies. In order to help diagnose loading problems, consider setting the DYLD_PRINT_LIBRARIES environment variable: dlopen(liblib_lightgbm, 1): image not found
+   at Microsoft.ML.Trainers.LightGbm.WrappedLightGbmInterface.DatasetCreateFromSampledColumn(IntPtr sampleValuePerColumn, IntPtr sampleIndicesPerColumn, Int32 numCol, Int32[] sampleNonZeroCntPerColumn, Int32 numSampleRow, Int32 numTotalRow, String parameters, IntPtr& ret)
+   at Microsoft.ML.Trainers.LightGbm.Dataset..ctor(Double[][] sampleValuePerColumn, Int32[][] sampleIndicesPerColumn, Int32 numCol, Int32[] sampleNonZeroCntPerColumn, Int32 numSampleRow, Int32 numTotalRow, String param, Single[] labels, Single[] weights, Int32[] groups)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.CreateDatasetFromSamplingData(IChannel ch, Factory factory, Int32 numRow, String param, Single[] labels, Single[] weights, Int32[] groups, CategoricalMetaData catMetaData, Dataset& dataset)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.LoadTrainingData(IChannel ch, RoleMappedData trainData, CategoricalMetaData& catMetaData)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.TrainModelCore(TrainContext context)
+   at Microsoft.ML.Trainers.TrainerEstimatorBase`2.TrainTransformer(IDataView trainSet, IDataView validationSet, IPredictor initPredictor)
+   at Microsoft.ML.Data.EstimatorChain`1.Fit(IDataView input)
+   at Microsoft.ML.AutoML.RunnerUtil.TrainAndScorePipeline[TMetrics](MLContext context, SuggestedPipeline pipeline, IDataView trainData, IDataView validData, String labelColumn, IMetricsAgent`1 metricsAgent, ITransformer preprocessorTransform, FileInfo modelFileInfo, DataViewSchema modelInputSchema, AutoMLLogger logger)
+[Source=AutoML, Kind=Error] Pipeline crashed: xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} tr=LightGbmBinary{}  cache=- . Exception: System.DllNotFoundException: Unable to load shared library 'lib_lightgbm' or one of its dependencies. In order to help diagnose loading problems, consider setting the DYLD_PRINT_LIBRARIES environment variable: dlopen(liblib_lightgbm, 1): image not found
+   at Microsoft.ML.Trainers.LightGbm.WrappedLightGbmInterface.DatasetCreateFromSampledColumn(IntPtr sampleValuePerColumn, IntPtr sampleIndicesPerColumn, Int32 numCol, Int32[] sampleNonZeroCntPerColumn, Int32 numSampleRow, Int32 numTotalRow, String parameters, IntPtr& ret)
+   at Microsoft.ML.Trainers.LightGbm.Dataset..ctor(Double[][] sampleValuePerColumn, Int32[][] sampleIndicesPerColumn, Int32 numCol, Int32[] sampleNonZeroCntPerColumn, Int32 numSampleRow, Int32 numTotalRow, String param, Single[] labels, Single[] weights, Int32[] groups)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.CreateDatasetFromSamplingData(IChannel ch, Factory factory, Int32 numRow, String param, Single[] labels, Single[] weights, Int32[] groups, CategoricalMetaData catMetaData, Dataset& dataset)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.LoadTrainingData(IChannel ch, RoleMappedData trainData, CategoricalMetaData& catMetaData)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.TrainModelCore(TrainContext context)
+   at Microsoft.ML.Trainers.TrainerEstimatorBase`2.TrainTransformer(IDataView trainSet, IDataView validationSet, IPredictor initPredictor)
+   at Microsoft.ML.Data.EstimatorChain`1.Fit(IDataView input)
+   at Microsoft.ML.AutoML.RunnerUtil.TrainAndScorePipeline[TMetrics](MLContext context, SuggestedPipeline pipeline, IDataView trainData, IDataView validData, String labelColumn, IMetricsAgent`1 metricsAgent, ITransformer preprocessorTransform, FileInfo modelFileInfo, DataViewSchema modelInputSchema, AutoMLLogger logger)
+[Source=AutoML, Kind=Error] Pipeline crashed: xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} tr=LightGbmBinary{}  cache=- . Exception: System.DllNotFoundException: Unable to load shared library 'lib_lightgbm' or one of its dependencies. In order to help diagnose loading problems, consider setting the DYLD_PRINT_LIBRARIES environment variable: dlopen(liblib_lightgbm, 1): image not found
+   at Microsoft.ML.Trainers.LightGbm.WrappedLightGbmInterface.DatasetCreateFromSampledColumn(IntPtr sampleValuePerColumn, IntPtr sampleIndicesPerColumn, Int32 numCol, Int32[] sampleNonZeroCntPerColumn, Int32 numSampleRow, Int32 numTotalRow, String parameters, IntPtr& ret)
+   at Microsoft.ML.Trainers.LightGbm.Dataset..ctor(Double[][] sampleValuePerColumn, Int32[][] sampleIndicesPerColumn, Int32 numCol, Int32[] sampleNonZeroCntPerColumn, Int32 numSampleRow, Int32 numTotalRow, String param, Single[] labels, Single[] weights, Int32[] groups)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.CreateDatasetFromSamplingData(IChannel ch, Factory factory, Int32 numRow, String param, Single[] labels, Single[] weights, Int32[] groups, CategoricalMetaData catMetaData, Dataset& dataset)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.LoadTrainingData(IChannel ch, RoleMappedData trainData, CategoricalMetaData& catMetaData)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.TrainModelCore(TrainContext context)
+   at Microsoft.ML.Trainers.TrainerEstimatorBase`2.TrainTransformer(IDataView trainSet, IDataView validationSet, IPredictor initPredictor)
+   at Microsoft.ML.Data.EstimatorChain`1.Fit(IDataView input)
+   at Microsoft.ML.AutoML.RunnerUtil.TrainAndScorePipeline[TMetrics](MLContext context, SuggestedPipeline pipeline, IDataView trainData, IDataView validData, String labelColumn, IMetricsAgent`1 metricsAgent, ITransformer preprocessorTransform, FileInfo modelFileInfo, DataViewSchema modelInputSchema, AutoMLLogger logger)
+[Source=AutoML, Kind=Error] Pipeline crashed: xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} tr=LightGbmBinary{}  cache=- . Exception: System.DllNotFoundException: Unable to load shared library 'lib_lightgbm' or one of its dependencies. In order to help diagnose loading problems, consider setting the DYLD_PRINT_LIBRARIES environment variable: dlopen(liblib_lightgbm, 1): image not found
+   at Microsoft.ML.Trainers.LightGbm.WrappedLightGbmInterface.DatasetCreateFromSampledColumn(IntPtr sampleValuePerColumn, IntPtr sampleIndicesPerColumn, Int32 numCol, Int32[] sampleNonZeroCntPerColumn, Int32 numSampleRow, Int32 numTotalRow, String parameters, IntPtr& ret)
+   at Microsoft.ML.Trainers.LightGbm.Dataset..ctor(Double[][] sampleValuePerColumn, Int32[][] sampleIndicesPerColumn, Int32 numCol, Int32[] sampleNonZeroCntPerColumn, Int32 numSampleRow, Int32 numTotalRow, String param, Single[] labels, Single[] weights, Int32[] groups)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.CreateDatasetFromSamplingData(IChannel ch, Factory factory, Int32 numRow, String param, Single[] labels, Single[] weights, Int32[] groups, CategoricalMetaData catMetaData, Dataset& dataset)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.LoadTrainingData(IChannel ch, RoleMappedData trainData, CategoricalMetaData& catMetaData)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.TrainModelCore(TrainContext context)
+   at Microsoft.ML.Trainers.TrainerEstimatorBase`2.TrainTransformer(IDataView trainSet, IDataView validationSet, IPredictor initPredictor)
+   at Microsoft.ML.Data.EstimatorChain`1.Fit(IDataView input)
+   at Microsoft.ML.AutoML.RunnerUtil.TrainAndScorePipeline[TMetrics](MLContext context, SuggestedPipeline pipeline, IDataView trainData, IDataView validData, String labelColumn, IMetricsAgent`1 metricsAgent, ITransformer preprocessorTransform, FileInfo modelFileInfo, DataViewSchema modelInputSchema, AutoMLLogger logger)
+[Source=AutoML, Kind=Error] Pipeline crashed: xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} tr=LightGbmBinary{}  cache=- . Exception: System.DllNotFoundException: Unable to load shared library 'lib_lightgbm' or one of its dependencies. In order to help diagnose loading problems, consider setting the DYLD_PRINT_LIBRARIES environment variable: dlopen(liblib_lightgbm, 1): image not found
+   at Microsoft.ML.Trainers.LightGbm.WrappedLightGbmInterface.DatasetCreateFromSampledColumn(IntPtr sampleValuePerColumn, IntPtr sampleIndicesPerColumn, Int32 numCol, Int32[] sampleNonZeroCntPerColumn, Int32 numSampleRow, Int32 numTotalRow, String parameters, IntPtr& ret)
+   at Microsoft.ML.Trainers.LightGbm.Dataset..ctor(Double[][] sampleValuePerColumn, Int32[][] sampleIndicesPerColumn, Int32 numCol, Int32[] sampleNonZeroCntPerColumn, Int32 numSampleRow, Int32 numTotalRow, String param, Single[] labels, Single[] weights, Int32[] groups)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.CreateDatasetFromSamplingData(IChannel ch, Factory factory, Int32 numRow, String param, Single[] labels, Single[] weights, Int32[] groups, CategoricalMetaData catMetaData, Dataset& dataset)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.LoadTrainingData(IChannel ch, RoleMappedData trainData, CategoricalMetaData& catMetaData)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.TrainModelCore(TrainContext context)
+   at Microsoft.ML.Trainers.TrainerEstimatorBase`2.TrainTransformer(IDataView trainSet, IDataView validationSet, IPredictor initPredictor)
+   at Microsoft.ML.Data.EstimatorChain`1.Fit(IDataView input)
+   at Microsoft.ML.AutoML.RunnerUtil.TrainAndScorePipeline[TMetrics](MLContext context, SuggestedPipeline pipeline, IDataView trainData, IDataView validData, String labelColumn, IMetricsAgent`1 metricsAgent, ITransformer preprocessorTransform, FileInfo modelFileInfo, DataViewSchema modelInputSchema, AutoMLLogger logger)
+[Source=AutoML, Kind=Error] Pipeline crashed: xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} tr=LightGbmBinary{}  cache=- . Exception: System.DllNotFoundException: Unable to load shared library 'lib_lightgbm' or one of its dependencies. In order to help diagnose loading problems, consider setting the DYLD_PRINT_LIBRARIES environment variable: dlopen(liblib_lightgbm, 1): image not found
+   at Microsoft.ML.Trainers.LightGbm.WrappedLightGbmInterface.DatasetCreateFromSampledColumn(IntPtr sampleValuePerColumn, IntPtr sampleIndicesPerColumn, Int32 numCol, Int32[] sampleNonZeroCntPerColumn, Int32 numSampleRow, Int32 numTotalRow, String parameters, IntPtr& ret)
+   at Microsoft.ML.Trainers.LightGbm.Dataset..ctor(Double[][] sampleValuePerColumn, Int32[][] sampleIndicesPerColumn, Int32 numCol, Int32[] sampleNonZeroCntPerColumn, Int32 numSampleRow, Int32 numTotalRow, String param, Single[] labels, Single[] weights, Int32[] groups)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.CreateDatasetFromSamplingData(IChannel ch, Factory factory, Int32 numRow, String param, Single[] labels, Single[] weights, Int32[] groups, CategoricalMetaData catMetaData, Dataset& dataset)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.LoadTrainingData(IChannel ch, RoleMappedData trainData, CategoricalMetaData& catMetaData)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.TrainModelCore(TrainContext context)
+   at Microsoft.ML.Trainers.TrainerEstimatorBase`2.TrainTransformer(IDataView trainSet, IDataView validationSet, IPredictor initPredictor)
+   at Microsoft.ML.Data.EstimatorChain`1.Fit(IDataView input)
+   at Microsoft.ML.AutoML.RunnerUtil.TrainAndScorePipeline[TMetrics](MLContext context, SuggestedPipeline pipeline, IDataView trainData, IDataView validData, String labelColumn, IMetricsAgent`1 metricsAgent, ITransformer preprocessorTransform, FileInfo modelFileInfo, DataViewSchema modelInputSchema, AutoMLLogger logger)
+[Source=AutoML, Kind=Error] Pipeline crashed: xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} tr=LightGbmBinary{}  cache=- . Exception: System.DllNotFoundException: Unable to load shared library 'lib_lightgbm' or one of its dependencies. In order to help diagnose loading problems, consider setting the DYLD_PRINT_LIBRARIES environment variable: dlopen(liblib_lightgbm, 1): image not found
+   at Microsoft.ML.Trainers.LightGbm.WrappedLightGbmInterface.DatasetCreateFromSampledColumn(IntPtr sampleValuePerColumn, IntPtr sampleIndicesPerColumn, Int32 numCol, Int32[] sampleNonZeroCntPerColumn, Int32 numSampleRow, Int32 numTotalRow, String parameters, IntPtr& ret)
+   at Microsoft.ML.Trainers.LightGbm.Dataset..ctor(Double[][] sampleValuePerColumn, Int32[][] sampleIndicesPerColumn, Int32 numCol, Int32[] sampleNonZeroCntPerColumn, Int32 numSampleRow, Int32 numTotalRow, String param, Single[] labels, Single[] weights, Int32[] groups)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.CreateDatasetFromSamplingData(IChannel ch, Factory factory, Int32 numRow, String param, Single[] labels, Single[] weights, Int32[] groups, CategoricalMetaData catMetaData, Dataset& dataset)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.LoadTrainingData(IChannel ch, RoleMappedData trainData, CategoricalMetaData& catMetaData)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.TrainModelCore(TrainContext context)
+   at Microsoft.ML.Trainers.TrainerEstimatorBase`2.TrainTransformer(IDataView trainSet, IDataView validationSet, IPredictor initPredictor)
+   at Microsoft.ML.Data.EstimatorChain`1.Fit(IDataView input)
+   at Microsoft.ML.AutoML.RunnerUtil.TrainAndScorePipeline[TMetrics](MLContext context, SuggestedPipeline pipeline, IDataView trainData, IDataView validData, String labelColumn, IMetricsAgent`1 metricsAgent, ITransformer preprocessorTransform, FileInfo modelFileInfo, DataViewSchema modelInputSchema, AutoMLLogger logger)
+[Source=AutoML, Kind=Trace] 3	NaN	00:00:00.8078090	xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} tr=LightGbmBinary{}  cache=-
+|3    LightGbmBinary                            NaN      NaN      NaN       NaN       0.8          0             |
+System.DllNotFoundException: Unable to load shared library 'lib_lightgbm' or one of its dependencies. In order to help diagnose loading problems, consider setting the DYLD_PRINT_LIBRARIES environment variable: dlopen(liblib_lightgbm, 1): image not found
+   at Microsoft.ML.Trainers.LightGbm.WrappedLightGbmInterface.DatasetCreateFromSampledColumn(IntPtr sampleValuePerColumn, IntPtr sampleIndicesPerColumn, Int32 numCol, Int32[] sampleNonZeroCntPerColumn, Int32 numSampleRow, Int32 numTotalRow, String parameters, IntPtr& ret)
+   at Microsoft.ML.Trainers.LightGbm.Dataset..ctor(Double[][] sampleValuePerColumn, Int32[][] sampleIndicesPerColumn, Int32 numCol, Int32[] sampleNonZeroCntPerColumn, Int32 numSampleRow, Int32 numTotalRow, String param, Single[] labels, Single[] weights, Int32[] groups)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.CreateDatasetFromSamplingData(IChannel ch, Factory factory, Int32 numRow, String param, Single[] labels, Single[] weights, Int32[] groups, CategoricalMetaData catMetaData, Dataset& dataset)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.LoadTrainingData(IChannel ch, RoleMappedData trainData, CategoricalMetaData& catMetaData)
+   at Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.TrainModelCore(TrainContext context)
+   at Microsoft.ML.Trainers.TrainerEstimatorBase`2.TrainTransformer(IDataView trainSet, IDataView validationSet, IPredictor initPredictor)
+   at Microsoft.ML.Data.EstimatorChain`1.Fit(IDataView input)
+   at Microsoft.ML.AutoML.RunnerUtil.TrainAndScorePipeline[TMetrics](MLContext context, SuggestedPipeline pipeline, IDataView trainData, IDataView validData, String labelColumn, IMetricsAgent`1 metricsAgent, ITransformer preprocessorTransform, FileInfo modelFileInfo, DataViewSchema modelInputSchema, AutoMLLogger logger)
+[Source=AutoML, Kind=Trace] Evaluating pipeline xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} xf=Normalizing{ col=Features:Features} tr=SymbolicSgdLogisticRegressionBinary{}  cache=+
+[Source=AutoML, Kind=Error] Pipeline crashed: xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} xf=Normalizing{ col=Features:Features} tr=SymbolicSgdLogisticRegressionBinary{}  cache=+ . Exception: System.TypeInitializationException: The type initializer for 'Native' threw an exception. ---> System.DllNotFoundException: Unable to load shared library 'MklImports' or one of its dependencies. In order to help diagnose loading problems, consider setting the DYLD_PRINT_LIBRARIES environment variable: dlopen(libMklImports, 1): image not found
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native.ErrorMessage(Int32 status)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native..cctor()
+   --- End of inner exception stack trace ---
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native.LearnAll(InputDataManager inputDataManager, Boolean tuneLR, Single& lr, Single l2Const, Single piw, Span`1 weightVector, Single& bias, Int32 numFeatres, Int32 numPasses, Int32 numThreads, Boolean tuneNumLocIter, Int32& numLocIter, Single tolerance, Boolean needShuffle, Boolean shouldInitialize, GCHandle stateGCHandle, ChannelCallBack info)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.TrainCore(IChannel ch, RoleMappedData data, LinearModelParameters predictor, Int32 weightSetCount)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.TrainModelCore(TrainContext context)
+   at Microsoft.ML.Trainers.TrainerEstimatorBase`2.TrainTransformer(IDataView trainSet, IDataView validationSet, IPredictor initPredictor)
+   at Microsoft.ML.Data.EstimatorChain`1.Fit(IDataView input)
+   at Microsoft.ML.AutoML.RunnerUtil.TrainAndScorePipeline[TMetrics](MLContext context, SuggestedPipeline pipeline, IDataView trainData, IDataView validData, String labelColumn, IMetricsAgent`1 metricsAgent, ITransformer preprocessorTransform, FileInfo modelFileInfo, DataViewSchema modelInputSchema, AutoMLLogger logger)
+[Source=AutoML, Kind=Error] Pipeline crashed: xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} xf=Normalizing{ col=Features:Features} tr=SymbolicSgdLogisticRegressionBinary{}  cache=+ . Exception: System.TypeInitializationException: The type initializer for 'Native' threw an exception. ---> System.DllNotFoundException: Unable to load shared library 'MklImports' or one of its dependencies. In order to help diagnose loading problems, consider setting the DYLD_PRINT_LIBRARIES environment variable: dlopen(libMklImports, 1): image not found
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native.ErrorMessage(Int32 status)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native..cctor()
+   --- End of inner exception stack trace ---
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native.LearnAll(InputDataManager inputDataManager, Boolean tuneLR, Single& lr, Single l2Const, Single piw, Span`1 weightVector, Single& bias, Int32 numFeatres, Int32 numPasses, Int32 numThreads, Boolean tuneNumLocIter, Int32& numLocIter, Single tolerance, Boolean needShuffle, Boolean shouldInitialize, GCHandle stateGCHandle, ChannelCallBack info)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.TrainCore(IChannel ch, RoleMappedData data, LinearModelParameters predictor, Int32 weightSetCount)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.TrainModelCore(TrainContext context)
+   at Microsoft.ML.Trainers.TrainerEstimatorBase`2.TrainTransformer(IDataView trainSet, IDataView validationSet, IPredictor initPredictor)
+   at Microsoft.ML.Data.EstimatorChain`1.Fit(IDataView input)
+   at Microsoft.ML.AutoML.RunnerUtil.TrainAndScorePipeline[TMetrics](MLContext context, SuggestedPipeline pipeline, IDataView trainData, IDataView validData, String labelColumn, IMetricsAgent`1 metricsAgent, ITransformer preprocessorTransform, FileInfo modelFileInfo, DataViewSchema modelInputSchema, AutoMLLogger logger)
+[Source=AutoML, Kind=Error] Pipeline crashed: xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} xf=Normalizing{ col=Features:Features} tr=SymbolicSgdLogisticRegressionBinary{}  cache=+ . Exception: System.TypeInitializationException: The type initializer for 'Native' threw an exception. ---> System.DllNotFoundException: Unable to load shared library 'MklImports' or one of its dependencies. In order to help diagnose loading problems, consider setting the DYLD_PRINT_LIBRARIES environment variable: dlopen(libMklImports, 1): image not found
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native.ErrorMessage(Int32 status)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native..cctor()
+   --- End of inner exception stack trace ---
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native.LearnAll(InputDataManager inputDataManager, Boolean tuneLR, Single& lr, Single l2Const, Single piw, Span`1 weightVector, Single& bias, Int32 numFeatres, Int32 numPasses, Int32 numThreads, Boolean tuneNumLocIter, Int32& numLocIter, Single tolerance, Boolean needShuffle, Boolean shouldInitialize, GCHandle stateGCHandle, ChannelCallBack info)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.TrainCore(IChannel ch, RoleMappedData data, LinearModelParameters predictor, Int32 weightSetCount)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.TrainModelCore(TrainContext context)
+   at Microsoft.ML.Trainers.TrainerEstimatorBase`2.TrainTransformer(IDataView trainSet, IDataView validationSet, IPredictor initPredictor)
+   at Microsoft.ML.Data.EstimatorChain`1.Fit(IDataView input)
+   at Microsoft.ML.AutoML.RunnerUtil.TrainAndScorePipeline[TMetrics](MLContext context, SuggestedPipeline pipeline, IDataView trainData, IDataView validData, String labelColumn, IMetricsAgent`1 metricsAgent, ITransformer preprocessorTransform, FileInfo modelFileInfo, DataViewSchema modelInputSchema, AutoMLLogger logger)
+[Source=AutoML, Kind=Error] Pipeline crashed: xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} xf=Normalizing{ col=Features:Features} tr=SymbolicSgdLogisticRegressionBinary{}  cache=+ . Exception: System.TypeInitializationException: The type initializer for 'Native' threw an exception. ---> System.DllNotFoundException: Unable to load shared library 'MklImports' or one of its dependencies. In order to help diagnose loading problems, consider setting the DYLD_PRINT_LIBRARIES environment variable: dlopen(libMklImports, 1): image not found
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native.ErrorMessage(Int32 status)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native..cctor()
+   --- End of inner exception stack trace ---
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native.LearnAll(InputDataManager inputDataManager, Boolean tuneLR, Single& lr, Single l2Const, Single piw, Span`1 weightVector, Single& bias, Int32 numFeatres, Int32 numPasses, Int32 numThreads, Boolean tuneNumLocIter, Int32& numLocIter, Single tolerance, Boolean needShuffle, Boolean shouldInitialize, GCHandle stateGCHandle, ChannelCallBack info)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.TrainCore(IChannel ch, RoleMappedData data, LinearModelParameters predictor, Int32 weightSetCount)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.TrainModelCore(TrainContext context)
+   at Microsoft.ML.Trainers.TrainerEstimatorBase`2.TrainTransformer(IDataView trainSet, IDataView validationSet, IPredictor initPredictor)
+   at Microsoft.ML.Data.EstimatorChain`1.Fit(IDataView input)
+   at Microsoft.ML.AutoML.RunnerUtil.TrainAndScorePipeline[TMetrics](MLContext context, SuggestedPipeline pipeline, IDataView trainData, IDataView validData, String labelColumn, IMetricsAgent`1 metricsAgent, ITransformer preprocessorTransform, FileInfo modelFileInfo, DataViewSchema modelInputSchema, AutoMLLogger logger)
+[Source=AutoML, Kind=Error] Pipeline crashed: xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} xf=Normalizing{ col=Features:Features} tr=SymbolicSgdLogisticRegressionBinary{}  cache=+ . Exception: System.TypeInitializationException: The type initializer for 'Native' threw an exception. ---> System.DllNotFoundException: Unable to load shared library 'MklImports' or one of its dependencies. In order to help diagnose loading problems, consider setting the DYLD_PRINT_LIBRARIES environment variable: dlopen(libMklImports, 1): image not found
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native.ErrorMessage(Int32 status)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native..cctor()
+   --- End of inner exception stack trace ---
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native.LearnAll(InputDataManager inputDataManager, Boolean tuneLR, Single& lr, Single l2Const, Single piw, Span`1 weightVector, Single& bias, Int32 numFeatres, Int32 numPasses, Int32 numThreads, Boolean tuneNumLocIter, Int32& numLocIter, Single tolerance, Boolean needShuffle, Boolean shouldInitialize, GCHandle stateGCHandle, ChannelCallBack info)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.TrainCore(IChannel ch, RoleMappedData data, LinearModelParameters predictor, Int32 weightSetCount)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.TrainModelCore(TrainContext context)
+   at Microsoft.ML.Trainers.TrainerEstimatorBase`2.TrainTransformer(IDataView trainSet, IDataView validationSet, IPredictor initPredictor)
+   at Microsoft.ML.Data.EstimatorChain`1.Fit(IDataView input)
+   at Microsoft.ML.AutoML.RunnerUtil.TrainAndScorePipeline[TMetrics](MLContext context, SuggestedPipeline pipeline, IDataView trainData, IDataView validData, String labelColumn, IMetricsAgent`1 metricsAgent, ITransformer preprocessorTransform, FileInfo modelFileInfo, DataViewSchema modelInputSchema, AutoMLLogger logger)
+[Source=AutoML, Kind=Error] Pipeline crashed: xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} xf=Normalizing{ col=Features:Features} tr=SymbolicSgdLogisticRegressionBinary{}  cache=+ . Exception: System.TypeInitializationException: The type initializer for 'Native' threw an exception. ---> System.DllNotFoundException: Unable to load shared library 'MklImports' or one of its dependencies. In order to help diagnose loading problems, consider setting the DYLD_PRINT_LIBRARIES environment variable: dlopen(libMklImports, 1): image not found
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native.ErrorMessage(Int32 status)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native..cctor()
+   --- End of inner exception stack trace ---
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native.LearnAll(InputDataManager inputDataManager, Boolean tuneLR, Single& lr, Single l2Const, Single piw, Span`1 weightVector, Single& bias, Int32 numFeatres, Int32 numPasses, Int32 numThreads, Boolean tuneNumLocIter, Int32& numLocIter, Single tolerance, Boolean needShuffle, Boolean shouldInitialize, GCHandle stateGCHandle, ChannelCallBack info)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.TrainCore(IChannel ch, RoleMappedData data, LinearModelParameters predictor, Int32 weightSetCount)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.TrainModelCore(TrainContext context)
+   at Microsoft.ML.Trainers.TrainerEstimatorBase`2.TrainTransformer(IDataView trainSet, IDataView validationSet, IPredictor initPredictor)
+   at Microsoft.ML.Data.EstimatorChain`1.Fit(IDataView input)
+   at Microsoft.ML.AutoML.RunnerUtil.TrainAndScorePipeline[TMetrics](MLContext context, SuggestedPipeline pipeline, IDataView trainData, IDataView validData, String labelColumn, IMetricsAgent`1 metricsAgent, ITransformer preprocessorTransform, FileInfo modelFileInfo, DataViewSchema modelInputSchema, AutoMLLogger logger)
+[Source=AutoML, Kind=Error] Pipeline crashed: xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} xf=Normalizing{ col=Features:Features} tr=SymbolicSgdLogisticRegressionBinary{}  cache=+ . Exception: System.TypeInitializationException: The type initializer for 'Native' threw an exception. ---> System.DllNotFoundException: Unable to load shared library 'MklImports' or one of its dependencies. In order to help diagnose loading problems, consider setting the DYLD_PRINT_LIBRARIES environment variable: dlopen(libMklImports, 1): image not found
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native.ErrorMessage(Int32 status)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native..cctor()
+   --- End of inner exception stack trace ---
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native.LearnAll(InputDataManager inputDataManager, Boolean tuneLR, Single& lr, Single l2Const, Single piw, Span`1 weightVector, Single& bias, Int32 numFeatres, Int32 numPasses, Int32 numThreads, Boolean tuneNumLocIter, Int32& numLocIter, Single tolerance, Boolean needShuffle, Boolean shouldInitialize, GCHandle stateGCHandle, ChannelCallBack info)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.TrainCore(IChannel ch, RoleMappedData data, LinearModelParameters predictor, Int32 weightSetCount)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.TrainModelCore(TrainContext context)
+   at Microsoft.ML.Trainers.TrainerEstimatorBase`2.TrainTransformer(IDataView trainSet, IDataView validationSet, IPredictor initPredictor)
+   at Microsoft.ML.Data.EstimatorChain`1.Fit(IDataView input)
+   at Microsoft.ML.AutoML.RunnerUtil.TrainAndScorePipeline[TMetrics](MLContext context, SuggestedPipeline pipeline, IDataView trainData, IDataView validData, String labelColumn, IMetricsAgent`1 metricsAgent, ITransformer preprocessorTransform, FileInfo modelFileInfo, DataViewSchema modelInputSchema, AutoMLLogger logger)
+[Source=AutoML, Kind=Error] Pipeline crashed: xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} xf=Normalizing{ col=Features:Features} tr=SymbolicSgdLogisticRegressionBinary{}  cache=+ . Exception: System.TypeInitializationException: The type initializer for 'Native' threw an exception. ---> System.DllNotFoundException: Unable to load shared library 'MklImports' or one of its dependencies. In order to help diagnose loading problems, consider setting the DYLD_PRINT_LIBRARIES environment variable: dlopen(libMklImports, 1): image not found
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native.ErrorMessage(Int32 status)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native..cctor()
+   --- End of inner exception stack trace ---
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native.LearnAll(InputDataManager inputDataManager, Boolean tuneLR, Single& lr, Single l2Const, Single piw, Span`1 weightVector, Single& bias, Int32 numFeatres, Int32 numPasses, Int32 numThreads, Boolean tuneNumLocIter, Int32& numLocIter, Single tolerance, Boolean needShuffle, Boolean shouldInitialize, GCHandle stateGCHandle, ChannelCallBack info)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.TrainCore(IChannel ch, RoleMappedData data, LinearModelParameters predictor, Int32 weightSetCount)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.TrainModelCore(TrainContext context)
+   at Microsoft.ML.Trainers.TrainerEstimatorBase`2.TrainTransformer(IDataView trainSet, IDataView validationSet, IPredictor initPredictor)
+   at Microsoft.ML.Data.EstimatorChain`1.Fit(IDataView input)
+   at Microsoft.ML.AutoML.RunnerUtil.TrainAndScorePipeline[TMetrics](MLContext context, SuggestedPipeline pipeline, IDataView trainData, IDataView validData, String labelColumn, IMetricsAgent`1 metricsAgent, ITransformer preprocessorTransform, FileInfo modelFileInfo, DataViewSchema modelInputSchema, AutoMLLogger logger)
+[Source=AutoML, Kind=Error] Pipeline crashed: xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} xf=Normalizing{ col=Features:Features} tr=SymbolicSgdLogisticRegressionBinary{}  cache=+ . Exception: System.TypeInitializationException: The type initializer for 'Native' threw an exception. ---> System.DllNotFoundException: Unable to load shared library 'MklImports' or one of its dependencies. In order to help diagnose loading problems, consider setting the DYLD_PRINT_LIBRARIES environment variable: dlopen(libMklImports, 1): image not found
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native.ErrorMessage(Int32 status)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native..cctor()
+   --- End of inner exception stack trace ---
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native.LearnAll(InputDataManager inputDataManager, Boolean tuneLR, Single& lr, Single l2Const, Single piw, Span`1 weightVector, Single& bias, Int32 numFeatres, Int32 numPasses, Int32 numThreads, Boolean tuneNumLocIter, Int32& numLocIter, Single tolerance, Boolean needShuffle, Boolean shouldInitialize, GCHandle stateGCHandle, ChannelCallBack info)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.TrainCore(IChannel ch, RoleMappedData data, LinearModelParameters predictor, Int32 weightSetCount)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.TrainModelCore(TrainContext context)
+   at Microsoft.ML.Trainers.TrainerEstimatorBase`2.TrainTransformer(IDataView trainSet, IDataView validationSet, IPredictor initPredictor)
+   at Microsoft.ML.Data.EstimatorChain`1.Fit(IDataView input)
+   at Microsoft.ML.AutoML.RunnerUtil.TrainAndScorePipeline[TMetrics](MLContext context, SuggestedPipeline pipeline, IDataView trainData, IDataView validData, String labelColumn, IMetricsAgent`1 metricsAgent, ITransformer preprocessorTransform, FileInfo modelFileInfo, DataViewSchema modelInputSchema, AutoMLLogger logger)
+[Source=AutoML, Kind=Error] Pipeline crashed: xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} xf=Normalizing{ col=Features:Features} tr=SymbolicSgdLogisticRegressionBinary{}  cache=+ . Exception: System.TypeInitializationException: The type initializer for 'Native' threw an exception. ---> System.DllNotFoundException: Unable to load shared library 'MklImports' or one of its dependencies. In order to help diagnose loading problems, consider setting the DYLD_PRINT_LIBRARIES environment variable: dlopen(libMklImports, 1): image not found
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native.ErrorMessage(Int32 status)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native..cctor()
+   --- End of inner exception stack trace ---
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native.LearnAll(InputDataManager inputDataManager, Boolean tuneLR, Single& lr, Single l2Const, Single piw, Span`1 weightVector, Single& bias, Int32 numFeatres, Int32 numPasses, Int32 numThreads, Boolean tuneNumLocIter, Int32& numLocIter, Single tolerance, Boolean needShuffle, Boolean shouldInitialize, GCHandle stateGCHandle, ChannelCallBack info)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.TrainCore(IChannel ch, RoleMappedData data, LinearModelParameters predictor, Int32 weightSetCount)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.TrainModelCore(TrainContext context)
+   at Microsoft.ML.Trainers.TrainerEstimatorBase`2.TrainTransformer(IDataView trainSet, IDataView validationSet, IPredictor initPredictor)
+   at Microsoft.ML.Data.EstimatorChain`1.Fit(IDataView input)
+   at Microsoft.ML.AutoML.RunnerUtil.TrainAndScorePipeline[TMetrics](MLContext context, SuggestedPipeline pipeline, IDataView trainData, IDataView validData, String labelColumn, IMetricsAgent`1 metricsAgent, ITransformer preprocessorTransform, FileInfo modelFileInfo, DataViewSchema modelInputSchema, AutoMLLogger logger)
+[Source=AutoML, Kind=Trace] 4	NaN	00:00:00.6012550	xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} xf=Normalizing{ col=Features:Features} tr=SymbolicSgdLogisticRegressionBinary{}  cache=+
+|4    SymbolicSgdLogisticRegressionBinary       NaN      NaN      NaN       NaN       0.6          0             |
+System.TypeInitializationException: The type initializer for 'Native' threw an exception. ---> System.DllNotFoundException: Unable to load shared library 'MklImports' or one of its dependencies. In order to help diagnose loading problems, consider setting the DYLD_PRINT_LIBRARIES environment variable: dlopen(libMklImports, 1): image not found
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native.ErrorMessage(Int32 status)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native..cctor()
+   --- End of inner exception stack trace ---
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Native.LearnAll(InputDataManager inputDataManager, Boolean tuneLR, Single& lr, Single l2Const, Single piw, Span`1 weightVector, Single& bias, Int32 numFeatres, Int32 numPasses, Int32 numThreads, Boolean tuneNumLocIter, Int32& numLocIter, Single tolerance, Boolean needShuffle, Boolean shouldInitialize, GCHandle stateGCHandle, ChannelCallBack info)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.TrainCore(IChannel ch, RoleMappedData data, LinearModelParameters predictor, Int32 weightSetCount)
+   at Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.TrainModelCore(TrainContext context)
+   at Microsoft.ML.Trainers.TrainerEstimatorBase`2.TrainTransformer(IDataView trainSet, IDataView validationSet, IPredictor initPredictor)
+   at Microsoft.ML.Data.EstimatorChain`1.Fit(IDataView input)
+   at Microsoft.ML.AutoML.RunnerUtil.TrainAndScorePipeline[TMetrics](MLContext context, SuggestedPipeline pipeline, IDataView trainData, IDataView validData, String labelColumn, IMetricsAgent`1 metricsAgent, ITransformer preprocessorTransform, FileInfo modelFileInfo, DataViewSchema modelInputSchema, AutoMLLogger logger)
+[Source=AutoML, Kind=Trace] Evaluating pipeline xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} xf=Normalizing{ col=Features:Features} tr=LinearSvmBinary{}  cache=+
+[Source=AutoML, Kind=Trace] 5	0.762218299373483	00:00:01.6249330	xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} xf=Normalizing{ col=Features:Features} tr=LinearSvmBinary{}  cache=+
+|5    LinearSvmBinary                        0.7579   0.7951   0.8057    0.7527       1.6          0             |
+[Source=AutoML, Kind=Trace] Evaluating pipeline xf=TextFeaturizing{ col=col0_tf:col0} xf=ColumnCopying{ col=Features:col0_tf} tr=FastTreeBinary{}  cache=-
+
+===============================================Experiment Results=================================================
+------------------------------------------------------------------------------------------------------------------
+|                                                     Summary                                                    |
+------------------------------------------------------------------------------------------------------------------
+|ML Task: binary-classification                                                                                  |
+|Dataset: yelp_labelled.txt                                                                                      |
+|Label : Label                                                                                                   |
+|Total experiment time : 10.51 Secs                                                                              |
+|Total number of models explored: 5                                                                              |
+------------------------------------------------------------------------------------------------------------------
+|                                              Top 3 models explored                                             |
+------------------------------------------------------------------------------------------------------------------
+|     Trainer                              Accuracy      AUC    AUPRC  F1-score  Duration #Iteration             |
+|1    SdcaLogisticRegressionBinary           0.8240   0.9012   0.9124    0.8167       3.2          2             |
+|2    AveragedPerceptronBinary               0.8041   0.8644   0.8729    0.8000       2.7          1             |
+|3    LinearSvmBinary                        0.7579   0.7951   0.8057    0.7527       1.6          3             |
+------------------------------------------------------------------------------------------------------------------
+Generated trained model for consumption: /Users/ada/Projects/fsharp-ml/SampleBinaryClassification/SampleBinaryClassification.Model/MLModel.zip
+Generated C# code for model consumption: /Users/ada/Projects/fsharp-ml/SampleBinaryClassification/SampleBinaryClassification.ConsoleApp
+Check out log file for more information: /Users/ada/Projects/fsharp-ml/SampleBinaryClassification/logs/debug_log.txt

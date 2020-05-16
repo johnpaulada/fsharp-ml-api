@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/808fbc20-ee68-4310-bc9b-47912fcd202e/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/fsharp-ml",
+    "appService.deploySubpath": "API"
+}
